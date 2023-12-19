@@ -21,6 +21,7 @@ class Article
 
         $query = $db->query('SELECT * FROM articles');
         return $query->fetchAll(PDO::FETCH_ASSOC);
+        
     }
 
     public static function getById($id)
