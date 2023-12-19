@@ -7,7 +7,7 @@ class ArticleController
     public function index()
     {
         $articles = Article::getAll();
-        require 'views/articles/index.php';
+        require 'D:\WebEnv\nginx-1.24.0\nginx-1.24.0\html\BTTH03_MVC\views\articles\index.php';
     }
 
     // Display the article creation form
@@ -22,10 +22,10 @@ class ArticleController
         $title = $_POST['title'];
         $content = $_POST['content'];
 
-        $article = new Article();
-        $article->setTitle($title);
-        $article->setContent($content);
-        $article->save();
+        $articles = new Article();
+        $articles->setTitle($title);
+        $articles->setContent($content);
+        $articles->save();
 
         header('Location: index.php?controller=article&action=index');
     }
@@ -34,7 +34,7 @@ class ArticleController
     public function edit()
     {
         $id = $_GET['id'];
-        $article = Article::getById($id);
+        $articles = Article::getById($id);
         require 'views/articles/edit.php';
     }
 
@@ -45,10 +45,10 @@ class ArticleController
         $title = $_POST['title'];
         $content = $_POST['content'];
 
-        $article = Article::getById($id);
-        $article->setTitle($title);
-        $article->setContent($content);
-        $article->save();
+        $articles = Article::getById($id);
+        $articles->setTitle($title);
+        $articles->setContent($content);
+        $articles->save();
 
         header('Location: index.php?controller=article&action=index');
     }
@@ -57,8 +57,8 @@ class ArticleController
     public function delete()
     {
         $id = $_GET['id'];
-        $article = Article::getById($id);
-        $article->delete();
+        $articles = Article::getById($id);
+        $articles->delete();
 
         header('Location: index.php?controller=article&action=index');
     }
